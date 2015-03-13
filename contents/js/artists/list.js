@@ -1,4 +1,4 @@
-var DoctorList = React.createClass({displayName: 'DoctorList',
+var ArtistList = React.createClass({displayName: 'artistList',
 
     getInitialState: function() {
         return {data: []};
@@ -11,7 +11,7 @@ var DoctorList = React.createClass({displayName: 'DoctorList',
             success: function(data) {
                 console.log(data);
                 this.setState({
-                    data: data.response.songs
+                    data: data.response.artists
                 });
             }.bind(this),
             error: function(xhr, status, err) {
@@ -21,14 +21,14 @@ var DoctorList = React.createClass({displayName: 'DoctorList',
     },
 
     handleListItemClicked: function(name){
-        name = name || 'ed sheeran'
+        name = name
         var query = "http://developer.echonest.com/api/v4/artist/news?api_key=" + echonest.api_key + "&name=" + name + "&results=3&start=0";
         $.ajax({
             url: query,
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                this.refs.doctorView.setState({doctor:data.response.news})
+                this.refs.artistView.setState({artist:data.response.news})
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(query, status, err.toString());
@@ -40,26 +40,26 @@ var DoctorList = React.createClass({displayName: 'DoctorList',
 
         var self = this
 
-        var doctors = this.state.data.map(function (doctor) {
+        var artists = this.state.data.map(function (artist) {
 
           return (
-            <DoctorListItem doctor={doctor} onListItemClicked={self.handleListItemClicked}/>
+            <ArtistListItem artist={artist} onListItemClicked={self.handleListItemClicked}/>
             )
         })
 
         return (
-            <div className="doctorPage">
-                <div className="doctorList six columns">
+            <div className="artistPage">
+                <div className="artistList six columns">
                     <div className="six columns">
                         <h4> Artist </h4>
                     </div>
                     <div className="six columns">
-                        <h4> Song </h4>
+                        <h4> Hotness </h4>
                     </div>
-                    {doctors}
+                    {artists}
                 </div>
-                <div className="doctorView six columns">
-                    <DoctorView ref="doctorView"/>
+                <div className="artistView six columns">
+                    <ArtistView ref="artistView"/>
                 </div>
             </div>
         )

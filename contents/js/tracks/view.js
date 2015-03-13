@@ -1,17 +1,17 @@
-var DoctorView = React.createClass({
+var TrackView = React.createClass({
 
     getInitialState: function() {
-        return {doctor: null}
+        return {track: null}
     },
 
     render: function() {
 
-        if (this.state.doctor){
-            var news = this.state.doctor
+        if (this.state.track){
+            var news = this.state.track
             var newsMap = news.map(function (article){
                 return (
                     <div>
-                        <h4 className="doctorName"> {article.name} </h4>
+                        <h4 className="trackName"> {article.name} </h4>
                         Summary: <i>{article.summary} </i>
                     </div>
                )
@@ -19,7 +19,7 @@ var DoctorView = React.createClass({
 
             return (
 
-                <div className="doctorView" >
+                <div className="trackView" >
                     {newsMap}
                 </div>
             )
