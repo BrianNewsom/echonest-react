@@ -1,2 +1,19 @@
-a#restaurants.button Hot Artists
-a#doctors.button Hot Tracks
+nav(class="navbar navbar-default")
+    div(class="container-fluid")
+        div(class="navbar-header")
+            button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+                span(class="sr-only")
+                    Toggle navigation
+                span(class="icon-bar")
+                span(class="icon-bar")
+                span(class="icon-bar")
+        a(class="navbar-brand",href="/echonest-react/") 
+            b Band Stalker
+        div(id="navbar", class="navbar-collapse collapse")
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/echonest-react/") Home
+                li
+                    a(href="#",id="hot-tracks") Hot Tracks
+                li
+                    a(href="#",id="hot-artists") Hot Artists
